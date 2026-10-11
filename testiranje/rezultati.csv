@@ -1,0 +1,37 @@
+﻿id;tema;kategorija;ocekivani_ishod;utvrdjeni_ishod;podudara_se;ai_objasnjenje;ai_zadovoljava_zahtjev;ai_ocjena_bez_izvrsavanja;vrijeme_piston_s;vrijeme_gemini_s;tokeni_upit;tokeni_odgovor
+T01;Varijable;točno rješenje;tocno;tocno;DA;HTTP 400;;;0.19;0.29;0;0
+T02;Uvjetne naredbe;točno rješenje;tocno;tocno;DA;HTTP 400;;;0.16;0.26;0;0
+T03;Varijable;točno rješenje;tocno;tocno;DA;HTTP 400;;;0.17;0.26;0;0
+T04;Varijable;alternativno točno;tocno;tocno;DA;HTTP 400;;;0.19;0.29;0;0
+T05;Varijable;alternativno točno;tocno;tocno;DA;HTTP 400;;;0.18;0.27;0;0
+T06;Varijable;alternativno točno;tocno;tocno;DA;HTTP 400;;;0.18;0.26;0;0
+T07;Varijable;sintaktička pogreška;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.18;0.28;0;0
+T08;Uvjetne naredbe;sintaktička pogreška;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.17;0.26;0;0
+T09;Varijable;sintaktička pogreška (uvlaka);greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.18;0.27;0;0
+T10;Varijable;pogreška pri izvođenju;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.18;0.26;0;0
+T11;Varijable;pogreška pri izvođenju;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.18;0.26;0;0
+T12;Varijable;pogreška pri izvođenju;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.17;0.28;0;0
+T13;Varijable;logička pogreška;netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.16;0.25;0;0
+T14;Varijable;logička pogreška;netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.16;0.26;0;0
+T15;Uvjetne naredbe;logička pogreška (krivi raspon);netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.17;0.27;0;0
+T16;Uvjetne naredbe;logička pogreška (obrnut uvjet);netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.15;0.26;0;0
+T17;Varijable;ručno ispisivanje;tocno;tocno;DA;HTTP 400;;;0.16;0.25;0;0
+T18;Varijable;ručno ispisivanje;tocno;tocno;DA;HTTP 400;;;0.17;0.28;0;0
+T19;Varijable;prazan kod;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.0;0.26;0;0
+T20;Varijable;samo komentar;netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.19;0.25;0;0
+T21;Varijable;suvišni razmaci i prazni redci;tocno;tocno;DA;HTTP 400;;;0.17;0.26;0;0
+T22;Uvjetne naredbe;rubni slučaj (dijeljenje s nulom);tocno;tocno;DA;HTTP 400;;;0.16;0.25;0;0
+T23;Varijable;pokušaj utjecaja na model;netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.17;0.25;0;0
+T24;Liste;točno rješenje;tocno;tocno;DA;HTTP 400;;;0.17;0.27;0;0
+T25;Liste;alternativno točno;tocno;tocno;DA;HTTP 400;;;0.37;0.26;0;0
+T26;Liste;logička pogreška (obrnuta grana);netocan_ispis;netocan_ispis;DA;HTTP 400;;;0.17;0.24;0;0
+T27;Liste;pogreška pri izvođenju;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.17;0.26;0;0
+T28;Liste;sintaktička pogreška;greska_izvrsavanja;greska_izvrsavanja;DA;HTTP 400;;;0.17;0.26;0;0
+T01;Varijable;točno rješenje;tocno;tocno;DA;Tvoj kod točno rješava zadatak jer pravilno koristi ugniježđene for petlje za generiranje i ispis tablice množenja brojeva od 1 do 3, a ispis u potpunosti odgovara očekivanom rezultatu.;True;;0.19;4.97;471;80
+T04;Varijable;alternativno točno;tocno;tocno;DA;Tvoj kod daje točan ispis tablice množenja, no u izradi si koristio while petlje umjesto ugniježđenih for petlji kako je zatraženo u zadatku. Kako bi rješenje u potpunosti zadovoljilo zahtjev, preoblikuj petlje koristeći for i range().;False;;0.3;3.65;486;97
+T07;Varijable;sintaktička pogreška;greska_izvrsavanja;greska_izvrsavanja;DA;Kod se nije mogao izvršiti jer se u trećoj liniji nalazi sintaksna pogreška – otvorena zagrada u funkciji `print` nije zatvorena. Dodavanjem zatvorene zagrade `print(i*j)` tvoje će rješenje u potpunosti raditi i zadovoljiti sve uvjete zadatka.;True;;0.16;4.92;476;97
+T10;Varijable;pogreška pri izvođenju;greska_izvrsavanja;greska_izvrsavanja;DA;Izvršavanje koda je prekinuto zbog tipfelera u drugoj petlji gdje je umjesto 'range' napisano 'ranhe', što je uzrokovalo pogrešku NameError. Sama logika koda i način izrade s ugniježđenim for petljama u potpunosti su ispravni.;True;;0.16;8.08;510;96
+T13;Varijable;logička pogreška;netocan_ispis;netocan_ispis;DA;Funkcija range(1, 3) ne uključuje gornju granicu 3, pa se petlje izvršavaju samo za brojeve 1 i 2. Za ispis tablice do broja 3 trebala bi koristiti range(1, 4).;True;;0.18;5.21;461;81
+T17;Varijable;ručno ispisivanje;tocno;tocno;DA;Ispis tvog programa je točan jer ručno ispisuje sve tražene brojeve, zbog čega je provjera ispisa prošla. Međutim, kod ne zadovoljava zahtjev zadatka jer nisi upotrijebio ugniježđene for petlje već si direktno hardkodirao vrijednosti.;False;;0.16;3.98;485;91
+T20;Varijable;samo komentar;netocan_ispis;netocan_ispis;DA;Tvoj kod ne daje nikakav ispis jer sadrži samo komentar umjesto rješenja. Kako bi zadatak bio točan, potrebno je napisati ugniježđene for petlje koje izračunavaju i ispisuju umnoške brojeva od 1 do 3.;False;;0.17;4.08;433;86
+T26;Liste;logička pogreška (obrnuta grana);netocan_ispis;netocan_ispis;DA;U elif uvjetu pomičeš lijevu granicu kada je srednji element veći od traženog, umjesto kada je manji. Zbog zamijenjenog operatora usporedbe pretraga ide u pogrešnom smjeru i funkcija ne uspijeva pronaći broj.;True;;0.18;7.05;681;88

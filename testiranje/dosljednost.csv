@@ -1,0 +1,16 @@
+﻿id;ponavljanje;zadovoljava;objasnjenje
+T03;1;;HTTP 400
+T03;2;;HTTP 400
+T03;3;;HTTP 400
+T07;1;;HTTP 400
+T07;2;;HTTP 400
+T07;3;;HTTP 400
+T12;1;;HTTP 400
+T12;2;;HTTP 400
+T12;3;;HTTP 400
+T16;1;;HTTP 400
+T16;2;;HTTP 400
+T16;3;;HTTP 400
+T07;1;True;Izvršavanje koda je prekinuto zbog sintaksne pogreške u trećoj liniji, gdje nedostaje zatvorena zagrada poziva funkcije `print()`. Kada dodaš zagradu koja nedostaje na kraju linije `print(i*j)`, tvoj kod će raditi ispravno.
+T07;2;True;Kod se ne može izvršiti zbog sintaksne pogreške (SyntaxError) u trećoj liniji jer nedostaje zatvorena zagrada u funkciji `print()`. Unatoč tome, logika koda i upotreba ugniježđenih petlji u potpunosti odgovaraju zahtjevima zadatka.
+T07;3;True;Izvršavanje koda prekinuto je zbog sintaksne pogreške jer zagrada u funkciji print nije zatvorena na kraju trećeg retka. Unatoč toj pogrešci, struktura koda i primjena ugniježđenih for petlji u potpunosti odgovaraju traženom načinu izrade.

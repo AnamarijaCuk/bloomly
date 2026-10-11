@@ -1,0 +1,6 @@
+﻿id;provjera;ocekivano;http_status;odgovor
+R1;Neautentificirani pokušaj čitanja tablice progress;prazan rezultat ili odbijen pristup;200;[]
+R2;Korisnik A čita vlastiti napredak;vraćeni isključivo zapisi korisnika A;200;4 zapisa, svi pripadaju korisniku A: True
+R3;Korisnik A pokušava pročitati zapise korisnika B;prazan rezultat;200;0 zapisa: []
+R4;Korisnik A pokušava izmijeniti zapis korisnika B;nijedan zapis nije izmijenjen;200;izmijenjeno zapisa: 0
+R5;Korisnik A mijenja vlastiti rezultat izravnim zahtjevom bazi;izmjena je dopuštena jer je zapis njegov;200;izmijenjeno zapisa: 4
