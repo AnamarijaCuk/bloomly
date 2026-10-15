@@ -1,7 +1,9 @@
 // lib/bloom_level_select_screen.dart
 //
 // Nakon odabira teme (Varijable/Liste/If-else) na Home ekranu, ovaj ekran
-// prikazuje 3 kartice za Bloom razine (1-2, 3-4, 5-6) unutar te teme.
+// prikazuje 3 kartice za skupine zadataka unutar te teme. Skupine se imenuju
+// prema vrsti misaone aktivnosti (Osnovni pojmovi, Razumijevanje i povezivanje,
+// Primjena kroz kod), a uz naziv se navodi stvarna Bloomova razina.
 // Svaka kartica pamti napredak - klik nastavlja TOČNO ondje gdje je korisnik stao.
 
 import 'package:flutter/material.dart';
@@ -11,6 +13,22 @@ import 'lesson_page_screen.dart';
 import 'services/progress_service.dart';
 
 const Color _brand = Color(0xFF378ADD);
+
+// Naziv skupine zadataka prikazan korisniku. Skupine se imenuju prema vrsti
+// misaone aktivnosti koju traže, a ne prema rasponu Bloomovih razina.
+// Unutarnja oznaka ("1-2", "3-4", "5-6") ostaje nepromijenjena.
+String nazivSkupineZa(Object? bloomLevels) {
+  switch (bloomLevels?.toString().trim()) {
+    case '1-2':
+      return 'Osnovni pojmovi';
+    case '3-4':
+      return 'Razumijevanje i povezivanje';
+    case '5-6':
+      return 'Primjena kroz kod';
+    default:
+      return bloomLevels?.toString() ?? '';
+  }
+}
 
 class BloomLevelSelectScreen extends StatefulWidget {
   final Topic topic;
@@ -79,19 +97,6 @@ class _BloomLevelSelectScreenState extends State<BloomLevelSelectScreen> {
 
   String _specificniOpis(Lesson lesson) {
     return _naziviLekcija[lesson.id] ?? lesson.title;
-  }
-
-  String _bloomKategorija(String bloomLevels) {
-    switch (bloomLevels) {
-      case '1-2':
-        return 'Pamćenje i razumijevanje';
-      case '3-4':
-        return 'Primjena i analiza';
-      case '5-6':
-        return 'Evaluacija i kreiranje';
-      default:
-        return '';
-    }
   }
 
   String _questionTypeLabel(QuestionType type) {
@@ -164,8 +169,6 @@ class _BloomLevelSelectScreenState extends State<BloomLevelSelectScreen> {
                           lesson: lekcija,
                           icon: _iconForBloom(lekcija.bloomLevels),
                           naslovKartice: _specificniOpis(lekcija),
-                          bloomKategorija:
-                              _bloomKategorija(lekcija.bloomLevels),
                           questionTypeLabel:
                               _questionTypeLabel(lekcija.questionType),
                           napredak: napredak,
@@ -202,7 +205,6 @@ class _BloomCard extends StatelessWidget {
   final Lesson lesson;
   final IconData icon;
   final String naslovKartice;
-  final String bloomKategorija;
   final String questionTypeLabel;
   final LessonProgress? napredak;
   final VoidCallback onTap;
@@ -211,7 +213,6 @@ class _BloomCard extends StatelessWidget {
     required this.lesson,
     required this.icon,
     required this.naslovKartice,
-    required this.bloomKategorija,
     required this.questionTypeLabel,
     required this.napredak,
     required this.onTap,
@@ -279,7 +280,7 @@ class _BloomCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Bloom ${lesson.bloomLevels} · $bloomKategorija',
+                        nazivSkupineZa(lesson.bloomLevels),
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,

@@ -9,7 +9,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const PISTON_URL = Deno.env.get("PISTON_URL")!;       // npr. http://212.39.115.52:2001/api/v2/execute
-const PISTON_TOKEN = Deno.env.get("PISTON_TOKEN")!;   // tajno zaglavlje
+const PISTON_TOKEN = Deno.env.get("OVDJE_UPISI_TAJNI_NIZ")!;   // tajno zaglavlje
 
 const cors = {
   "Access-Control-Allow-Origin": "*",

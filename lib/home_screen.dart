@@ -7,6 +7,26 @@ import 'models/topics_data.dart';
 import 'bloom_level_select_screen.dart';
 import 'widgets/app_background.dart';
 
+// Naziv skupine zadataka prikazan korisniku.
+//
+// Skupine se imenuju prema vrsti misaone aktivnosti koju traže, a ne prema
+// rasponu Bloomovih razina: naziv oblika "Bloom 5-6" sugerirao bi da skupina
+// obuhvaća evaluaciju i stvaranje, što nije točno. Unutarnja oznaka ("1-2",
+// "3-4", "5-6") ostaje nepromijenjena, pa postojeći zapisi o napretku u bazi
+// ostaju valjani.
+String nazivSkupineZa(Object? bloomLevels) {
+  switch (bloomLevels?.toString().trim()) {
+    case '1-2':
+      return 'Osnovni pojmovi';
+    case '3-4':
+      return 'Razumijevanje i povezivanje';
+    case '5-6':
+      return 'Primjena kroz kod';
+    default:
+      return bloomLevels?.toString() ?? '';
+  }
+}
+
 // ===================== HOME =====================
 
 class HomeScreen extends StatefulWidget {
@@ -252,7 +272,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Bloom ${lekcija.bloomLevels} - ${zavrseno ? "Završeno" : "U tijeku"}',
+                            '${nazivSkupineZa(lekcija.bloomLevels)}'
+                            ' - ${zavrseno ? "Završeno" : "U tijeku"}',
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,

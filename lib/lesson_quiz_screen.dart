@@ -778,7 +778,7 @@ class _CodeQuestionWidgetState extends State<_CodeQuestionWidget> {
   String get _naslovIshoda {
     switch (_provjera!.ishod) {
       case IshodProvjere.tocno:
-        return 'Točno!';
+        return 'Ispis odgovara očekivanom';
       case IshodProvjere.netocanIspis:
         return 'Ispis se ne podudara s očekivanim';
       case IshodProvjere.greskaIzvrsavanja:
@@ -804,7 +804,8 @@ class _CodeQuestionWidgetState extends State<_CodeQuestionWidget> {
   String get _opisIshoda {
     switch (_provjera!.ishod) {
       case IshodProvjere.tocno:
-        return 'Ispis tvog koda podudara se s očekivanim ispisom zadatka.';
+        return 'Ispis tvog koda podudara se s očekivanim ispisom zadatka. '
+            'Provjera uspoređuje ispis, a ne način na koji je dobiven.';
       case IshodProvjere.netocanIspis:
         return 'Program se izvršio bez pogreške, ali ispis nije jednak očekivanom.';
       case IshodProvjere.greskaIzvrsavanja:
@@ -942,6 +943,58 @@ class _CodeQuestionWidgetState extends State<_CodeQuestionWidget> {
               ],
             ),
           ),
+
+          // --- 2b. Ispunjenost zahtjeva zadatka ---
+          // Odvojeno od usporedbe ispisa: usporedba provjerava REZULTAT,
+          // ova procjena govori o NAČINU izrade. Ne utječe na ocjenu.
+          // Prikazuje se samo kada je ispis točan: tada postoji opasnost da se
+          // podudaranje ispisa shvati kao potpuno rješenje zadatka.
+          if (_provjera!.ishod == IshodProvjere.tocno &&
+              _objasnjenje?.available == true &&
+              _objasnjenje?.zadovoljavaZahtjev != null) ...[
+            const SizedBox(height: 12),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: Colors.amber.shade50,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.amber.shade300),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    _objasnjenje!.zadovoljavaZahtjev!
+                        ? Icons.task_alt
+                        : Icons.report_problem_outlined,
+                    size: 18,
+                    color: Colors.brown,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _objasnjenje!.zadovoljavaZahtjev!
+                              ? 'Zahtjevi zadatka: ispunjeni'
+                              : 'Zahtjevi zadatka: nisu ispunjeni u cijelosti',
+                          style: const TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          'Zasebna procjena o načinu izrade, odvojena od usporedbe '
+                          'ispisa. Donosi je AI mentor i ne utječe na ocjenu.',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
 
           // --- 3. Stvarni ispis koda ---
           if (_provjera!.stvarniIspis.trim().isNotEmpty) ...[
