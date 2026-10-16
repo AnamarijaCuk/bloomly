@@ -984,8 +984,8 @@ class _CodeQuestionWidgetState extends State<_CodeQuestionWidget> {
                         ),
                         const SizedBox(height: 4),
                         const Text(
-                          'Zasebna procjena o načinu izrade, odvojena od usporedbe '
-                          'ispisa. Donosi je AI mentor i ne utječe na ocjenu.',
+                          'Savjetodavna procjena načina izrade, odvojena od usporedbe '
+                          'ispisa. Donosi je jezični model i ne utječe na ocjenu.',
                           style: TextStyle(fontSize: 12),
                         ),
                       ],
